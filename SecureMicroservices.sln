@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.API", "Movies.API\Movies.API.csproj", "{014D4C56-F157-492F-A0F2-CC54D7CB9417}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.API", "Movies.API\Movies.API.csproj", "{014D4C56-F157-492F-A0F2-CC54D7CB9417}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{ACA31C42-F7F2-47F8-B369-CFF11D63132C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{014D4C56-F157-492F-A0F2-CC54D7CB9417}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{014D4C56-F157-492F-A0F2-CC54D7CB9417}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{014D4C56-F157-492F-A0F2-CC54D7CB9417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACA31C42-F7F2-47F8-B369-CFF11D63132C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACA31C42-F7F2-47F8-B369-CFF11D63132C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACA31C42-F7F2-47F8-B369-CFF11D63132C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACA31C42-F7F2-47F8-B369-CFF11D63132C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
