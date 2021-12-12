@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Movies.API.Data;
 using Movies.API.Model;
@@ -9,7 +10,8 @@ using System.Threading.Tasks;
 namespace Movies.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] 
+    [Authorize]
     public class MoviesController : Controller
     {
         public readonly MoviesAPIContext _context;
