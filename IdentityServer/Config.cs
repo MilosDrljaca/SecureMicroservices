@@ -31,7 +31,7 @@ namespace IdentityServer
                     RequirePkce = false,
                     AllowRememberConsent = false,
                     RedirectUris = new List<string>()
-                    { 
+                    {
                         "https://localhost:5002/signin-oidc"
                     },
                     PostLogoutRedirectUris = new List<string>()
@@ -45,7 +45,9 @@ namespace IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "movieAPI"
+                        "movieAPI",
+                        IdentityServerConstants.StandardScopes.Address,
+                        IdentityServerConstants.StandardScopes.Email
                     }
                 },
             };
@@ -65,7 +67,9 @@ namespace IdentityServer
             new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
+                new IdentityResources.Profile(),
+                new IdentityResources.Address(),
+                new IdentityResources.Email()
             };
 
         public static List<TestUser> TestUsers =>
