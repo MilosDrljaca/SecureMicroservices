@@ -5,6 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Movies.Client.ApiServices
@@ -88,24 +91,68 @@ namespace Movies.Client.ApiServices
             //return movieList;   
         }
 
-        public Task<Movie> GetMovie(string id)
+        public async Task<Movie> GetMovie(int id)
         {
-            throw new NotImplementedException();
+            var httpClient = _httpClientFactory.CreateClient("MovieAPIClient");
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Get,
+                $"/api/movies/{id}");
+
+            var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            response.EnsureSuccessStatusCode();
+
+            var content = await response.Content.ReadAsStringAsync();
+            var movie = JsonConvert.DeserializeObject<Movie>(content);
+            return movie;
         }
 
-        public Task<Movie> CreateMovie(Movie movie)
+        public async Task<Movie> CreateMovie(Movie movie)
         {
-            throw new NotImplementedException();
+            var httpClient = _httpClientFactory.CreateClient("MovieAPIClient");
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Post,
+                "/api/movies/");
+
+            var response = await httpClient.PostAsync(request.RequestUri, movie, new JsonMediaTypeFormatter());
+
+            response.EnsureSuccessStatusCode();
+
+            var content = await response.Content.ReadAsStringAsync();
+            var newMovie = JsonConvert.DeserializeObject<Movie>(content);
+            return newMovie;
         }
 
-        public Task DeleteMovie(int id)
+        public async Task DeleteMovie(int id)
         {
-            throw new NotImplementedException();
+            var httpClient = _httpClientFactory.CreateClient("MovieAPIClient");
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Delete,
+                $"/api/movies/{id}");
+
+            var response = await httpClient.DeleteAsync(request.RequestUri);
+
+            response.EnsureSuccessStatusCode();
         }
 
-        public Task<Movie> UpdateMovie(Movie movie)
+        public async Task<Movie> UpdateMovie(Movie movie)
         {
-            throw new NotImplementedException();
+            var httpClient = _httpClientFactory.CreateClient("MovieAPIClient");
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Put,
+                $"/api/movies/{movie.Id}");
+
+            var response = await httpClient.PutAsync(request.RequestUri, movie, new JsonMediaTypeFormatter());
+
+            response.EnsureSuccessStatusCode();
+
+            var content = await response.Content.ReadAsStringAsync();
+            var newMovie = JsonConvert.DeserializeObject<Movie>(content);
+            return newMovie;
         }
     }
 }

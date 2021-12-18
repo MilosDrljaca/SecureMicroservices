@@ -33,7 +33,7 @@ namespace Movies.API.Controllers
         public async Task<ActionResult<Movie>> GetMovie(int id)
         {
 
-            var movie = await _context.Movie.FindAsync();
+            var movie = await _context.Movie.FindAsync(id);
 
             if (movie == null)
             {
