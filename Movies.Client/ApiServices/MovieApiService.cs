@@ -33,7 +33,7 @@ namespace Movies.Client.ApiServices
 
             var request = new HttpRequestMessage(
                 HttpMethod.Get,
-                "/api/movies/");
+                "/movies");
 
             var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
@@ -102,7 +102,7 @@ namespace Movies.Client.ApiServices
 
             var request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"/api/movies/{id}");
+                $"/movies/{id}");
 
             var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
@@ -119,7 +119,7 @@ namespace Movies.Client.ApiServices
 
             var request = new HttpRequestMessage(
                 HttpMethod.Post,
-                "/api/movies/");
+                "/movies/");
 
             var response = await httpClient.PostAsync(request.RequestUri, movie, new JsonMediaTypeFormatter());
 
@@ -136,7 +136,7 @@ namespace Movies.Client.ApiServices
 
             var request = new HttpRequestMessage(
                 HttpMethod.Delete,
-                $"/api/movies/{id}");
+                $"/movies/{id}");
 
             var response = await httpClient.DeleteAsync(request.RequestUri);
 
@@ -149,7 +149,7 @@ namespace Movies.Client.ApiServices
 
             var request = new HttpRequestMessage(
                 HttpMethod.Put,
-                $"/api/movies/{movie.Id}");
+                $"/movies/{movie.Id}");
 
             var response = await httpClient.PutAsync(request.RequestUri, movie, new JsonMediaTypeFormatter());
 
