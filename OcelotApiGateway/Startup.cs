@@ -18,6 +18,19 @@ namespace OcelotApiGateway
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var authenticationProviderKey = "IdentityApiKey";
+
+            services.AddAuthentication()
+                .AddJwtBearer(authenticationProviderKey, x =>
+                {
+                    x.Authority = "https://localhost:5005"; //Identity Server URL
+                    //x.RequireHttpsMetadata = false;
+                    x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateAudience = false
+                    };
+                });
+
             services.AddOcelot();
         }
 
@@ -30,7 +43,6 @@ namespace OcelotApiGateway
             }
 
             app.UseRouting();
-            
 
             app.UseEndpoints(endpoints =>
             {
